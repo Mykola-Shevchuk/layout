@@ -1,0 +1,17 @@
+@mixin clearfix {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+@function per_unit($x) {
+	@return round(percentage($x/$offset_width));
+}
+
+@function calc_width($x) {
+	@return round($x/$offset_width*1345px);
+}
+
+@function font-size($x) {
+	@return round(percentage($x/16px));
+}

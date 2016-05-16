@@ -1,0 +1,437 @@
+@import "compass";
+@import "variables.scss";
+@import "mixins.scss";
+
+* {
+	padding: 0;
+	margin: 0;
+	@include box-sizing(border-box);
+}
+
+body {
+	font-family: "Roboto", sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	font-family: "Roboto", sans-serif;
+	font-size: 100%;
+}
+
+img {
+	width: 100%;
+	height: 100%;
+}
+
+.green-button {
+	position: relative;
+	@include border-radius(2px);
+	cursor: pointer;
+	text-align: center;
+	text-transform: uppercase;
+	color: #fff;
+	outline: none;
+	border: none;
+	&:active {
+			@include box-shadow(0 0 3px 1px rgba(255,255,255,.8) inset);
+		}
+}
+
+header {
+	width: 100%;
+	height: 44px;
+	position:  fixed;
+	z-index: 3;
+	background-color: $footer_header_color;
+	.top-container {
+		width: calc_width(941px);
+		height: 100%;
+		margin: 0 auto;
+	}
+	a.logo {
+		display: block;
+		float: left;
+		width: calc_width(140px);
+		height: 100%;
+		background-color: #fff;
+		font: {
+			weight: 900;
+			size: font-size(25px);
+		}
+		color: #27ae60;
+		text-align: center;
+		text-transform: uppercase;
+		padding-top: 6px;
+	}
+	button.enter {
+		width: calc_width(90px);
+		height: 34px;
+		float: right;
+		position: relative;
+    	top: 50%;
+    	transform: translateY(-50%);
+		background-image: linear-gradient(#27ad5f, #239d56);
+		background-image: -webkit-linear-gradient(#27ad5f, #239d56);
+		background-image: -moz-linear-gradient(#27ad5f, #239d56);
+		background-image: -ms-linear-gradient(#27ad5f, #239d56);
+		p {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: 0 auto;
+			@include transform(translateY(-50%) translateX(-50%));
+			font: {
+				weight: 400;
+				size: font-size(15px);
+			}
+		}
+		&:hover {
+			background-image: linear-gradient(#36c773, #31b367);
+			background-image: -webkit-linear-gradient(#36c773, #31b367);
+			background-image: -moz-linear-gradient(#36c773, #31b367);
+			background-image: -ms-linear-gradient(#36c773, #31b367);
+		}
+		&:active p {
+			font-size: font-size(14px);
+		}
+	}	
+}
+
+.menu {
+	height: 100%;
+	margin: 0 29.6% 0 24.7%; 
+	float: left;
+	a {
+		display: inline-block;
+		position: relative;
+		top: 43%;
+		@include transform(translateY(-50%));
+		color: #fff;
+		font-size: font-size(15px);
+		&:nth-child(2) {
+			margin: 0 36px;
+		}
+	}
+}
+
+.slider-container {
+	width: 100%;
+	height: 464px;
+	position: relative;
+	padding-top: 44px;
+	overflow: hidden;
+	div[class$=arrow] {
+		width: 16px;
+		height: 30px;
+		position: absolute;
+		top:53%;
+		cursor: pointer;
+	}
+	.left-arrow {
+		left: 17.5%;
+		background: no-repeat left/100% 100% url("../img/left-arrow.png");
+	}
+
+	.right-arrow {
+		right: 18.5%;
+		background: no-repeat left/100% 100% url("../img/right-arrow.png");
+	}
+}
+
+.slider-offset {
+	width: 500%;
+	height: 100%;
+	position: absolute;
+	left: 0%;
+	@include transition(all 1s);
+}
+
+.slider-offset > div {
+	float: left;
+	height: 100%;
+	background: no-repeat center/100% 100% url("../img/slider-bg.png");
+}
+
+.skills {
+	width: 360px;
+	position: absolute;
+	top: 30%;
+	right: per_unit(340px);
+	p {
+		font: {
+			weight: 100;
+			size: font-size(55px);
+		}
+		text-align: center;
+		line-height: 1.15em;
+		color: #555;
+	}
+	button.go {
+		width: calc_width(80px);
+		height: 40px;
+		left: 50%;
+		@include transform(translateX(-50%));
+		margin-top: 36px;
+		background-image: linear-gradient(#27ae60, #239C56);
+		background-image: -webkit-linear-gradient(#27ae60, #239C56);
+		background-image: -moz-linear-gradient(#27ae60, #239C56);
+		background-image: -ms-linear-gradient(#27ae60, #239C56);
+		&:hover {
+			background-image: linear-gradient(#36c673, #31b367);
+			background-image: -webkit-linear-gradient(#36c673, #31b367);
+			background-image: -moz-linear-gradient(#36c673, #31b367);
+			background-image: -ms-linear-gradient(#36c673, #31b367);
+		}
+		&:active p {
+			font-size: font-size(19px);
+		}
+		p {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: 0 auto;
+			color: white;
+			@include transform(translateY(-50%) translateX(-50%));
+			font: {
+				weight: 400;
+				size: font-size(20px);
+			}
+		}
+	}
+}
+
+.slider-toggle {
+	width: 100px;
+	position: absolute;
+	left: 50%;
+	bottom: 20px;
+	@include transform(translateX(-50%));
+	&::after {
+		@include clearfix;
+	}
+}
+
+.checked-toggle {
+	background-color: #2c3e50 !important;
+}
+
+.slider-toggle > div {
+	width: 16px;
+	height: 16px;
+	float: left;
+	outline: none;
+	@include border-radius(50%);
+	cursor: pointer;
+	background-color: rgba(121, 135, 125, .5);
+	@include transition(all .3s linear);
+	&:not(#toggle-5) {
+		margin-right: 4px;
+	}
+}
+
+.info {
+	width: 100%;
+	.info-container {
+		width: calc_width(941px);
+		margin: 45px auto 68px;
+		&::after {
+			@include clearfix;
+		}
+	}
+}
+
+.info-text {
+	width: 460px;
+	float: left;
+	h3 {
+		font: {
+			weight: 300;
+			size: font-size(35px);
+		}
+		color: #2c3e50;
+		margin-bottom: 25px;
+	}
+
+	p {
+		font-size: font-size(15px);
+		font-weight: 300;
+		color: #444;
+		line-height: 1.6em;
+	}
+	p.description {
+		margin-bottom: 6px;
+	}
+}
+
+.info-photo {
+	float: left;
+	width: calc_width(380px);
+	margin-left: 97px;
+	figcaption {
+		font-size: font-size(11px);
+		font-weight: 700;
+		color: #2c3e50;
+		padding-bottom: 7px;
+	}
+	.photo {
+		width: 380px;
+		height: 480px;
+	}
+}
+
+.registration {
+	width: 100%;
+	padding-top: 79px;
+	padding-bottom: 86px;
+	background: no-repeat center/100% 100% url("../img/form-bg.png");
+}
+
+form[name=form1] {
+	width: calc_width(460px);
+	height: 355px;
+	margin: 0 auto;
+	@include border-radius(2px);
+	background-color: #fff;
+	legend {
+		font: {
+			weight: 100;
+			size: font-size(35px);	
+		}
+		color: #828282;
+		margin: 0 auto;
+		padding: 20px 0px;
+	}
+	fieldset {
+		border: none;
+	}
+	input, select, ul {
+		display: block;
+		width: 300px;
+		height: 49px;
+		margin: 0 auto 10px;
+		@include border-radius(2px);
+		background-color: #f5f5f5;
+		border: none;
+		border-top: 1px solid #c4c4c4;
+		font: {
+			family: "Roboto Light", "Roboto", sans-serif;
+			size: font-size(20px);
+		} 
+		color: #555;
+	}
+	input, select {
+		padding-left: 20px;
+	}
+}
+		::-webkit-input-placeholder {
+   			color: #333;	
+		}
+
+		:-moz-placeholder { 
+   			color: #333;	  
+		}
+
+		::-moz-placeholder {  
+   			color: #333;
+		}
+
+		:-ms-input-placeholder {  
+   			color: #333;
+		}
+
+ul.country-select {
+	position: relative;
+	overflow: hidden;
+	z-index: 10;
+	li {
+		height: 100%;
+		list-style-type: none;
+		padding: 11px 0 11px 20px;
+		background-color: #fff;
+		border-top: 1px solid #c4c4c4;
+		border-left: 1px solid #c4c4c4;
+		border-right: 1px solid #c4c4c4;
+		cursor: pointer;
+		z-index: 20;
+		&.country-5 {
+			border-bottom: 1px solid #c4c4c4;
+		}
+		&:hover {
+			background-color: #f5f5f5 !important;
+		}
+		&.country {
+			background: none;
+			border: none;
+		}
+	}
+	.dropdown-arrow {
+		width: 13px;
+		height: 7px;
+		position: absolute;
+		top: 39%;
+		right: 5%;
+		cursor: pointer;
+		@include transition(all .1s linear);
+		background: no-repeat center/100% 100% url("../img/dropdown.png");
+	}
+}
+
+.form-button {
+	width: 120px;
+	height: 50px;
+	display: block;
+	margin: 20px auto 0;
+	z-index: 5;
+	background-image: linear-gradient(#50B774, #45A367); 
+	-webkit-background-image: linear-gradient(#50B774, #45A367); 
+	-moz-background-image: linear-gradient(#50B774, #45A367); 
+	-ms-background-image: linear-gradient(#50B774, #45A367); 
+	font: {
+		size: font-size(20px);
+	}
+	&:hover {
+		background-image: linear-gradient(#36c673, #31b367); 
+	    -webkit-background-image: linear-gradient(#36c673, #31b367); 
+	    -moz-background-image: linear-gradient(#36c673, #31b367); 
+	    -ms-background-image: linear-gradient(#36c673, #31b367);
+	}
+	&:active {
+		font-size: 120%;
+	}
+}
+
+footer {
+	width: 100%;
+	height: 44px;
+	position: relative;
+	background-color: $footer_header_color;
+	p {
+		position: absolute;
+		top:50%;
+		left: 50%;
+		@include transform(translateX(-50%) translateY(-50%));
+		color: #fff;
+		font: {
+			weight: 300;
+			size: font-size(15px);
+		}
+	}
+}
+
+.visible-list {
+	overflow: visible !important;
+}
+
+.rotate {
+	@include transform(rotateZ(180deg));
+}
+
+
+
+@font-face {
+	font-family: "Roboto Light";
+    src:url("../fonts/roboto.light.ttf");
+}
